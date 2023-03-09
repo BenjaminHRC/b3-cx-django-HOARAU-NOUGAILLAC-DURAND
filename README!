@@ -1,0 +1,5 @@
+- Partie Authentification: Comptes admin(*demander au prof) et utilisateur
+- Liste d'évènements (CRUD) pour les admins*
+- Réservation à des évènements (features: détail de la réservation, annulation de la réservation)
+- Liste d'écoles de pilotages (CRUD) pour les admins*
+- Vues: connexion, home(liste d'écoles dispo), réservation à une école, profils d'écoles(qui liste les réservations prises dans l'école)
