@@ -47,6 +47,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'schools.middleware.ProcessRequestMiddleware'
 ]
 
 ROOT_URLCONF = 'DjangoReservation.urls'
