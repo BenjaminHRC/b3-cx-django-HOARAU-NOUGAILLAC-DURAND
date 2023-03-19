@@ -8,6 +8,11 @@
     <title>Document</title>
 </head>
 <body>
-<p>cc</p>
+<h1>Création d'une école</h1>
+<form action="/schools/add" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
 </body>
 </html>
