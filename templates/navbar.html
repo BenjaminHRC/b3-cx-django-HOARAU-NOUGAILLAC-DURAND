@@ -1,0 +1,23 @@
+<nav class="navbar bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand text-white fw-bold" href="/">
+            SchoolFormations
+        </a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            {% if user.is_authenticated %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Se déconnecter</a>
+                </li>
+
+            {% else %}
+
+            <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Se connecter</a>
+                </li>
+
+            {% endif %}
+
+        </ul>
+    </div>
+</nav>

@@ -2,13 +2,18 @@
 
 {% block content %}
 
-{%if form.errors %}
-
-    <p>registration errror</p>
-
-{%endif%}
 
 <div class="col-8 mx-auto mt-4">
+
+    {%if form.errors %}
+    
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            Il y a une erreur dans le formulaire..
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    
+    {%endif%}
+
     <h1>Inscription</h1>
     <form action="" method="POST">
     {% comment %} <form action="{% url '/authenticate/register' %}" method="POST"> {% endcomment %}
@@ -16,15 +21,8 @@
 
         <div class="mb-2">
 
-            {{ form }}
-            {% comment %} <div class="form-group">
-                <label class="mb-2" for="username">Nom d'utilisateur : </label>
-                <input type="text" class="form-control" name="username" placeholder="Votre nom d'utilisateur">
-            </div>
-            <div class="form-group">
-                <label class="mb-2" for="password">Mot de passe : </label>
-                <input type="password" class="form-control" name="password" placeholder="Votre mot de passe">
-            </div> {% endcomment %}
+            {{ form.as_p }}
+
         </div>
 
         <input class="btn btn-primary" type="submit" value="S'inscrire">

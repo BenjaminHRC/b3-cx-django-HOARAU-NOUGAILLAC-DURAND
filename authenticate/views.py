@@ -1,23 +1,24 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from authenticate.forms import LoginForm, RegisterForm
+from django.contrib.auth.forms import UserCreationForm
 
 
 def user_register(request):
     if request.method == 'POST':
-        form = RegisterForm(request.POST)
+        form = UserCreationForm(request.POST)
 
-        if form.is_valid:
+        if form.is_valid():
             form.save()
             username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
+            password = form.cleaned_data['password1']
             user=authenticate(username=username, password=password)
             login(request, user)
-            return redirect('schools')
-    
+            return redirect('../../schools')
+                
     else:
-        form = RegisterForm()
+        form = UserCreationForm()
 
     return render(request, 'register.html', {'form': form})
 
@@ -30,18 +31,12 @@ def user_login(request):
 
         if user is not None:
             login(request, user)
-            return redirect('schools')
+            return redirect('../../schools')
         else:
+            messages.success(request, "Il y a eu une erreur dans vos identifiants de connexion, réessayez.")
             return redirect('login')
-
-    #     form = LoginForm(request.POST)
-    #     if form.is_valid():
-    #         form.save()
-    #         return redirect('schools')
-    # form = LoginForm()
     else:
         return render(request, 'login.html')
-    # return render(request, 'login.html', {'form': form})
 
 
 def logout_view(request):
