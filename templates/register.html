@@ -1,0 +1,33 @@
+{% extends "layouts.html" %}
+
+{% block content %}
+
+
+<div class="col-8 mx-auto mt-4">
+
+    {%if form.errors %}
+    
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            Il y a une erreur dans le formulaire..
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    
+    {%endif%}
+
+    <h1>Inscription</h1>
+    <form action="" method="POST">
+    {% comment %} <form action="{% url '/authenticate/register' %}" method="POST"> {% endcomment %}
+        {% csrf_token %}
+
+        <div class="mb-2">
+
+            {{ form.as_p }}
+
+        </div>
+
+        <input class="btn btn-primary" type="submit" value="S'inscrire">
+    </form>
+    <button class="mt-4 btn btn-warning"><a class="text-white" href="/authenticate">J'ai déjà un compte</a></button>
+</div>
+
+{% endblock %}
