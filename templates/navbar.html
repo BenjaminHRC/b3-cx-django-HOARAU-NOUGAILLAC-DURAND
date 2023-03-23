@@ -1,19 +1,19 @@
 <nav class="navbar bg-primary">
-    <div class="container-fluid">
+    <div class="container-fluid mx-5">
         <a class="navbar-brand text-white fw-bold" href="/">
             SchoolFormations
         </a>
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav mb-2 mb-lg-0">
             {% if user.is_authenticated %}
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">Se déconnecter</a>
+                    <a class="text-white nav-link" href="{% url 'logout' %}">Se déconnecter (connecté en tant que {{ user.username }}) </a>
                 </li>
 
             {% else %}
 
-            <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">Se connecter</a>
+                <li class="nav-item">
+                    <a class="text-white nav-link" href="{% url 'login' %}">Se connecter</a>
                 </li>
 
             {% endif %}
