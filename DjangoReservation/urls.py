@@ -19,7 +19,8 @@ from django.urls import path, include
 urlpatterns = [
     path('authenticate/', include('authenticate.urls')),
     path('authenticate/', include('django.contrib.auth.urls')),
-    path('admin/', admin.site.urls),
     path('', include('schools.urls')),
     path('schools/', include('schools.urls')),
+    path('booking/', include('reservations.urls')),
+    path('admin/', admin.site.urls),
 ]
