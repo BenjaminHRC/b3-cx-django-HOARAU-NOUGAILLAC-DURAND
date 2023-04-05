@@ -1,0 +1,31 @@
+{% extends "layouts.html" %}
+
+{% block content %}
+    <h1> Liste des écoles disponibles</h1>
+    <h3>La réservation pour une école de pilotage s'effectue à la journée.</h3>
+
+    {% if schools %}
+        {% for school in schools %}
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="me-5">
+                            <h2 class="text-primary">{{ school.name }}</h2>
+                            <p>{{ school.description|truncatewords_html:50 }}</p>
+                        </div>
+
+                        {% if user.is_authenticated %}
+                            <div class="d-flex nowrap gap-2">
+                                <button class="btn btn-warning"><a class="text-white" href="/schools/details/{{ school.id }}">Détails</a></button>
+                                <button class="btn btn-primary"><a class="text-white" href="/booking/new/{{ school.id }}">Réserver</a></button>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <br>
+        {% endfor %}
+    {% else %}
+        <p>Aucune école n'est disponible.</p>
+    {% endif %}
+{% endblock %}

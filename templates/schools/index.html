@@ -1,7 +1,6 @@
 {% extends "layouts.html" %}
 
 {% block content %}
-<div class="col-11 mx-auto">
     <button class="btn btn-primary my-2"><a class="text-white" href="/schools/add">Créer une école</a></button>
 
     {% if schools %}
@@ -14,20 +13,19 @@
                             <h6 class="text-secondary fs-italic">{{ school.address }}</h6>
                             <p>{{ school.description }}</p>
                         </div>
-                        <div class="d-flex nowrap gap-2">
+                        {% comment %} <div class="d-flex nowrap gap-2">
                             <button class="btn btn-primary">Réserver</button>
-                            {% comment %}<button class="btn btn-secondary">Détails</button>{% endcomment %}
-                        </div>
+                            <button class="btn btn-secondary">Détails</button>
+                        </div> {% endcomment %}
                     </div>
                 </div>
             </a>
             <br>
-                    {% comment %}<a href="/schools/delete/{{ school.id }}">
-                                delete
-                            </a>{% endcomment %}
+            <a href="/schools/delete/{{ school.id }}">
+                Supprimer
+            </a>
         {% endfor %}
     {% else %}
         <p>Aucune école n'est disponible.</p>
     {% endif %}
-</div>
 {% endblock %}

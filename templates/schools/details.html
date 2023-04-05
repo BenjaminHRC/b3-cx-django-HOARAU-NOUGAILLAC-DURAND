@@ -1,0 +1,14 @@
+{% extends "layouts.html" %}
+
+{% block content %}
+    <h1> {{ school.name }} </h1>
+    <h6>Adresse : {{ school.address }}</h6>
+    <p>{{ school.description }}</p>
+    <button class="btn btn-primary"><a class="text-white" href="/booking/new/{{ school.id }}">Réserver</a></button>
+    <p>Voici les réservations à venir pour cette école : </p>
+    {% for reservation in reservations %}
+        {% if reservation.date >= today %}
+            <p>{{reservation.date}} {% if reservation.user == user %} : réservé par vous ! </p>{% endif %}
+        {% endif %}
+    {% endfor %}
+{% endblock %}

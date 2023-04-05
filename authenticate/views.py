@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -41,4 +42,5 @@ def user_login(request):
 
 def logout_view(request):
     logout(request)
-    return render(request, 'login.html')
+    # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    return redirect('../../schools')

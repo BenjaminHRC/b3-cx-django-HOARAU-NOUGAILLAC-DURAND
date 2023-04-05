@@ -1,14 +1,27 @@
+import datetime
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.utils.dateparse import parse_date
+from django.db import connection
 
 from schools.forms import SchoolForm
-from schools.models import School
+from schools.models import Reservation, School
+
+def home(request):
+    schools = School.objects.all()
+    return render(request, 'schools/home.html', {'schools': schools})
+
+
+def details(request, school_id):
+    # connection.cursor().execute('DELETE FROM schools_reservation WHERE user_id = 16')
+    school = School.objects.get(id=school_id)
+    reservations = Reservation.objects.filter(school=school).order_by('date')
+    return render(request, 'schools/details.html', {'school': school, 'reservations': reservations, 'user': request.user, 'today': datetime.date.today()})
 
 
 def index(request):
     schools = School.objects.all()
-    context = {'schools': schools}
-    return render(request, 'schools/index.html', context)
+    return render(request, 'schools/index.html', {'schools': schools})
 
 
 def add(request):
